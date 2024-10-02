@@ -1,5 +1,8 @@
 pipeline {
-    agent any
+    agent 
+    {
+    label 'imsais'
+    }
     
     stages {
         stage('Git Checkout') {
