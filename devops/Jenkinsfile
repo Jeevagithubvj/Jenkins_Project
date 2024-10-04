@@ -10,7 +10,7 @@ pipeline{
      stage('complile')
            {
             steps{
-              sh 'mvn compile'
+              sh 'cd devops/ && mvn compile'
             }
            }
      
