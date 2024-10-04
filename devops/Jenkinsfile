@@ -22,7 +22,7 @@ pipeline{
     stage('build')
     {
      steps{
-      sh 'mvn clean install'
+      sh 'cd devops/ && mvn clean install'
      }
     }
      
