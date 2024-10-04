@@ -7,6 +7,12 @@ pipeline{
          sh 'echo passed'
        }
      }
+     stage('complile)
+           {
+            steps{
+              sh 'mvn compile'
+            }
+           }
      
    }
   
