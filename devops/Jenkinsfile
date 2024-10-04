@@ -1,14 +1,24 @@
 pipeline {
-    agent
-    {
-      label 'ssiaims'
-      }
+    agent {
+        label 'ssiaims'  // Specifies the agent label where the pipeline will run
+    }
     
     stages {
         stage('Git Checkout') {
             steps {
-                sh 'echo "passed"'
+                // You can replace the echo command with actual git checkout command
+                // For example, to checkout the code from the repository
+                sh 'echo "Checkout Stage: passed"'  // Placeholder command
             }
+        }
+    }
+
+    post {
+        success {
+            echo 'Pipeline completed successfully!'
+        }
+        failure {
+            echo 'Pipeline failed.'
         }
     }
 }
