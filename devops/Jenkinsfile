@@ -1,8 +1,5 @@
 pipeline {
-    agent 
-    {
-    label 'ssiaims'
-    }
+    agent any 
     
     stages {
         stage('Git Checkout') {
