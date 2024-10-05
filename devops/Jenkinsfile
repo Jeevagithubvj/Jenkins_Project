@@ -1,39 +1,32 @@
-pipeline{
- agent any
-   stages{
-     stage('git checkout')
-     {
-       steps{
-         sh 'echo passed'
-       }
-     }
-     stage('complile')
-           {
-            steps{
-              sh 'cd devops/ && mvn compile'
+pipeline {
+    agent any
+    stages {
+        stage('Git webhook Checkout') {
+            steps {
+                sh 'echo "Git checkout passed"'
             }
-           }
-     stage ('test')
-    {
-     steps{
-      sh 'cd devops/ && mvn test'
-     }
+        }
+        stage('Compile') {
+            steps {           
+                sh 'cd devops/ && mvn compile'
+            }
+        }
+        stage('Test') {
+            steps {             
+                sh 'cd devops/ && mvn test'
+            }
+        }
+        stage('Build') {
+            steps {           
+                sh 'cd devops/ && mvn clean install'
+            }
+        }
+        stage('SonarQube Analysis') {
+            steps {
+                withSonarQubeEnv('s') {            
+                    sh 'cd devops/ && mvn sonar:sonar'
+                }
+            }
+        }
     }
-    stage('build')
-    {
-     steps{
-      sh 'cd devops/ && mvn clean install'
-     }
-    }
-     stage('sonareqube')
-    {
-     steps{
-      withSonarQubeEnv(credentialsId: 's') {
-       sh 'cd devops/ && mvn sonar:sonar'
-         }
-     }
-    }
-    
-   }
-  
 }
