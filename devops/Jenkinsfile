@@ -31,9 +31,9 @@ pipeline {
         stage('Build and Push Docker Image') {
             steps {
                 script {
-                    def dockerImage = "abhishekf5/ultimate-cicd:${env.BUILD_NUMBER}"
+                    def dockerImage = "jeeva1235/cicd:${env.BUILD_NUMBER}"
                     sh "docker build -t ${dockerImage} devops/"
-                    docker.withRegistry('https://hub.docker.com/', 'your-credentials-id') {
+                    docker.withRegistry('https://hub.docker.com/', 'dcoker_cred') {
                         docker.image(dockerImage).push()
                     }
                 }
