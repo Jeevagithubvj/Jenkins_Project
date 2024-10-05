@@ -25,7 +25,15 @@ pipeline{
       sh 'cd devops/ && mvn clean install'
      }
     }
-     
+     stage('sonareqube')
+    {
+     steps{
+      withSonarQubeEnv(credentialsId: 's') {
+    // some block
+    }
+     }
+    }
+    
    }
   
 }
