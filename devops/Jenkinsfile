@@ -41,26 +41,26 @@ pipeline {
         }
         stage('Update GitHub Repository with Manifest') {
             environment {
-                GIT_CREDENTIALS_ID = 'github-cred'
-                GIT_REPO_URL = 'https://github.com/username/repository-name.git'
-                GIT_BRANCH = 'main'
+                GIT_CREDENTIALS_ID = 'git-cred'
+                GIT_REPO_URL = 'https://github.com/Jeevagithubvj/Jenkins_Project.git'
+                GIT_BRANCH = 'devops_project'
             }
             steps {
                 script {
                     sh '''
                         git clone ${GIT_REPO_URL}
-                        cd repository-name
+                        cd dev
                         git checkout ${GIT_BRANCH}
                     '''
                     
                     sh '''
-                        sed -i 's|image: jeeva1235/cicd:.*|image: jeeva1235/cicd:${BUILD_NUMBER}|' k8s/manifest.yaml
+                        sed -i 's|image: jeeva1235/cicd:.*|image: jeeva1235/cicd:${BUILD_NUMBER}|g' manifest.yaml
                     '''
                     
                     sh '''
-                        git config user.email "your-email@example.com"
-                        git config user.name "your-github-username"
-                        git add k8s/manifest.yaml
+                        git config user.email "jeeva.v.devops@gmail.com"
+                        git config user.name "vijay"
+                        git add manifest.yaml
                         git commit -m "Update manifest with Docker image tag ${BUILD_NUMBER}"
                         git push origin ${GIT_BRANCH}
                     '''
