@@ -28,5 +28,17 @@ pipeline {
                 }
             }
         }
+         stages {
+            stage('Build and Push Docker Image') {
+             steps {
+                script {
+                    def dockerImage = "abhishekf5/ultimate-cicd:${env.BUILD_NUMBER}"
+                    sh "docker build -t ${dockerImage} ."
+                    docker.withRegistry('https://hub.docker.com/', 'your-credentials-id') {
+                        docker.image(dockerImage).push()
+                    }
+                }
+            }
+        }
     }
 }
