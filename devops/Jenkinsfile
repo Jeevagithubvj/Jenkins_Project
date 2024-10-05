@@ -29,8 +29,7 @@ pipeline{
     {
      steps{
       withSonarQubeEnv(credentialsId: 's') {
-    // some block
-    }
+         }
      }
     }
     
