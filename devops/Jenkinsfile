@@ -7,33 +7,32 @@ pipeline {
             }
         }
         stage('Compile') {
-            steps {           
+            steps {
                 sh 'cd devops/ && mvn compile'
             }
         }
         stage('Test') {
-            steps {             
+            steps {
                 sh 'cd devops/ && mvn test'
             }
         }
         stage('Build') {
-            steps {           
+            steps {
                 sh 'cd devops/ && mvn clean install'
             }
         }
-        stage('static code analysis') {
+        stage('Static Code Analysis') {
             steps {
-                withSonarQubeEnv('sonarqubeserver') {            
+                withSonarQubeEnv('sonarqubeserver') {
                     sh 'cd devops/ && mvn sonar:sonar'
                 }
             }
         }
-         stages {
-            stage('Build and Push Docker Image') {
-             steps {
+        stage('Build and Push Docker Image') {
+            steps {
                 script {
                     def dockerImage = "abhishekf5/ultimate-cicd:${env.BUILD_NUMBER}"
-                    sh "docker build -t ${dockerImage} ."
+                    sh "docker build -t ${dockerImage} devops/"
                     docker.withRegistry('https://hub.docker.com/', 'your-credentials-id') {
                         docker.image(dockerImage).push()
                     }
