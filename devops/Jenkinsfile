@@ -21,7 +21,7 @@ pipeline {
                 sh 'cd devops/ && mvn clean install'
             }
         }
-        stage('SonarQube Analysis') {
+        stage('static code analysis') {
             steps {
                 withSonarQubeEnv('sonarqubeserver') {            
                     sh 'cd devops/ && mvn sonar:sonar'
