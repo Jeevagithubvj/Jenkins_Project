@@ -29,7 +29,7 @@ pipeline{
     {
      steps{
       withSonarQubeEnv(credentialsId: 's') {
-       sh 'mvn sonar:sonar'
+       sh 'cd devops/ && mvn sonar:sonar'
          }
      }
     }
