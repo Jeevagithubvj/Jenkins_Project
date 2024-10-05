@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Git webhook Checkout') {
             steps {
-                sh 'echo "Git checkout passed"'
+                 sh 'echo "Git checkout passed"'
             }
         }
         stage('Compile') {
