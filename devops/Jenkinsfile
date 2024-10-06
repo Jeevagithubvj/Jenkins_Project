@@ -42,14 +42,14 @@ pipeline {
         stage('Update GitHub Repository with Manifest') {
             environment {
                 GIT_CREDENTIALS_ID = 'git-cred'
-                GIT_REPO_URL = 'https://github.com/Jeevagithubvj/Jenkins_Project.git'
-                GIT_BRANCH = 'devops_project'
+                GIT_REPO_URL = 'https://github.com/Jeevagithubvj/Jeeva.git'
+                GIT_BRANCH = 'main'
             }
             steps {
                 script {
                     sh '''
                         git clone ${GIT_REPO_URL}
-                        cd Jenkins_Project  // Corrected the directory path after cloning
+                        cd k8
                         git checkout ${GIT_BRANCH}
                     '''
 
@@ -58,8 +58,8 @@ pipeline {
                     '''
 
                     sh '''
-                        git config user.email "jeeva.v.devops@gmail.com"
-                        git config user.name "vijay"
+                        git config --global user.email "jeeva.v.devops@gmail.com"
+                        git config --global user.name "vijay"
                         git add manifest.yaml
                         git commit -m "Update manifest with Docker image tag ${BUILD_NUMBER}"
                         git push origin ${GIT_BRANCH}
