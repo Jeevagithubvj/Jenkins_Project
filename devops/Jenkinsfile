@@ -61,7 +61,8 @@ pipeline {
                     sh '''
                         git config --global user.email "jeeva.v.devops@gmail.com"
                         git config --global user.name "vijay"
-                        git add Jeeva/k8/manifest.yaml
+                        cd Jeeva/k8
+                        git add manifest.yaml
                         git commit -m "Update manifest with Docker image tag ${BUILD_NUMBER}"
                         git push origin ${GIT_BRANCH} -f
                     '''
