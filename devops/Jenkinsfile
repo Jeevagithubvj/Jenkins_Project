@@ -49,7 +49,7 @@ pipeline {
                 script {
                     sh '''
                         git clone ${GIT_REPO_URL}
-                        cd k8
+                        cd Jeeva/k8
                         git checkout ${GIT_BRANCH}
                     '''
 
