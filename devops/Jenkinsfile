@@ -55,13 +55,13 @@ pipeline {
                     '''
 
                     sh '''
-                        sed -i 's|image: jeeva1235/cicd:.*|image: jeeva1235/cicd:${BUILD_NUMBER}|g' Jeeva/k8/manifest.yaml
+                        sed -i 's|image: jeeva1235/cicd:.*|image: jeeva1235/cicd:${env.BUILD_NUMBER}|g' Jeeva/k8/manifest.yaml
                     '''
 
                     sh '''
                         git config --global user.email "jeeva.v.devops@gmail.com"
                         git config --global user.name "vijay"
-                        git add manifest.yaml
+                        git add Jeeva/k8/manifest.yaml
                         git commit -m "Update manifest with Docker image tag ${BUILD_NUMBER}"
                         git push origin ${GIT_BRANCH}
                     '''
