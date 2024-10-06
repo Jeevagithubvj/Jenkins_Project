@@ -63,7 +63,8 @@ pipeline {
                         git config --global user.name "vijay"
                         git add Jeeva/k8/manifest.yaml
                         git commit -m "Update manifest with Docker image tag ${BUILD_NUMBER}"
-                        git push origin ${GIT_BRANCH}
+                        git remote add origin https://github.com/Jeevagithubvj/Jeeva.git
+                        git push origin ${GIT_BRANCH} -f
                     '''
                 }
             }
