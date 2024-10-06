@@ -6,6 +6,16 @@ pipeline {
                  sh 'echo "Git checkout passed"'
             }
         }
+        stage('for specific build for specfic branch'){
+         expression{
+             when{
+                 env.BRANCH_NAME=='devops_project'
+             }
+         }
+            steps{
+                echo 'build started at devops_project'
+            }
+        }
         stage('Compile') {  
             steps {
                 sh 'cd devops/ && mvn compile'
