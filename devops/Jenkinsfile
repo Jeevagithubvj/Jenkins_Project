@@ -33,7 +33,7 @@ pipeline {
                 script {
                     def dockerImage = "jeeva1235/cicd:${env.BUILD_NUMBER}"
                     sh "cd devops/ && docker build -t ${dockerImage} ."
-                    docker.withRegistry('https://index.docker.io/v1/', 'dcoker_cred') {  // Corrected docker credential ID
+                    docker.withRegistry('https://index.docker.io/v1/', 'dcoker_cred') {
                         docker.image(dockerImage).push()
                     }
                 }
@@ -62,7 +62,7 @@ pipeline {
                         git config --global user.email "jeeva.v.devops@gmail.com"
                         git config --global user.name "vijay"
                         git add Jeeva/k8/manifest.yaml
-                        git commit -m "Update manifest with Docker image tag ${BUILD_NUMBER}
+                        git commit -m "Update manifest with Docker image tag ${BUILD_NUMBER}"
                         git push origin ${GIT_BRANCH} -f
                     '''
                 }
