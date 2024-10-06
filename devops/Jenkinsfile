@@ -48,6 +48,7 @@ pipeline {
             steps {
                 script {
                     sh '''
+                        rm -rf Jeeva
                         git clone ${GIT_REPO_URL}
                         cd Jeeva/k8
                         git checkout ${GIT_BRANCH}
