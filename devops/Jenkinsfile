@@ -55,7 +55,7 @@ pipeline {
                     '''
 
                     sh '''
-                        sed -i 's|image: jeeva1235/cicd:.*|image: jeeva1235/cicd:${BUILD_NUMBER}|g' manifest.yaml
+                        sed -i 's|image: jeeva1235/cicd:.*|image: jeeva1235/cicd:${BUILD_NUMBER}|g' Jeeva/k8/manifest.yaml
                     '''
 
                     sh '''
