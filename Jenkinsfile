@@ -1,7 +1,7 @@
 pipeline
 {
     agent any
-     stages{
+     stages {
         stage('git checkout')
         {
             step
@@ -9,5 +9,5 @@ pipeline
                 echo 'first step passed'
             }
         }
-      }
+    }
 }
