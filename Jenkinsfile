@@ -7,7 +7,7 @@ pipeline
         {
             step
             {
-                echo 'passed'
+                echo 'first step passed'
             }
         }
       }
