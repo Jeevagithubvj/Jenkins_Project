@@ -4,10 +4,11 @@ pipeline
      stages {
         stage('git checkout')
         {
-            step
+            steps
             {
                 echo 'first step passed'
             }
         }
     }
 }
+
