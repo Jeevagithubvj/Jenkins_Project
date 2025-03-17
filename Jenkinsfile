@@ -8,6 +8,10 @@ pipeline
             {
                 echo 'first step passed'
             }
+            steps
+            {
+                echo 'dai gomala'
+            }
         }
     }
 }
